@@ -33,6 +33,7 @@ module.exports = {
         '@angular/core',
         '@angular/common',
         '@angular/forms',
+        '@ng-bootstrap/ng-bootstrap',
         'rxjs',
         'rxjs/operators',
         'tabby-core',
