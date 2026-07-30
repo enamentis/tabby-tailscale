@@ -3,7 +3,14 @@ import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 import { exec } from 'child_process'
 import { BaseTabComponent, ConfigProvider, ConfigService, NewTabParameters, PartialProfile, ProfileProvider, VaultService } from 'tabby-core'
-import { SSHProfile } from 'tabby-ssh'
+// Type-only: `tabby-ssh` is deliberately NOT a peerDependency. A fresh Tabby
+// plugins folder has no tabby-ssh installed, so declaring it as a peer (even
+// wildcarded) makes npm auto-install a real copy to satisfy it - and that
+// package's Windows postinstall script is currently broken, which breaks
+// installing this plugin too. Keep this a type-only import (erased at build
+// time, confirmed by dist/index.js never `require`-ing 'tabby-ssh') so it
+// stays true.
+import type { SSHProfile } from 'tabby-ssh'
 import { SettingsTabProvider } from 'tabby-settings'
 
 import { TailscaleConfigProvider } from './config.provider'

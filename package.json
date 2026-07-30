@@ -3,13 +3,27 @@
   "version": "0.2.1",
   "description": "Tabby Tailscale - lists Tailscale peers as SSH connection profiles in Tabby, grouped and filtered by regex rules on hostname/tags/online status, with configurable name labels",
   "keywords": [
-    "tabby-plugin"
+    "tabby-plugin",
+    "tailscale",
+    "ssh"
   ],
   "author": "Maximilian Botschen @ enamentis GmbH <maximilian.botschen@enamentis.de>",
   "license": "MIT",
   "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enamentis/tabby-tailscale.git"
+  },
+  "bugs": {
+    "url": "https://github.com/enamentis/tabby-tailscale/issues"
+  },
+  "homepage": "https://github.com/enamentis/tabby-tailscale#readme",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "typescript": "^5.0.0",
@@ -24,7 +38,6 @@
   },
   "peerDependencies": {
     "tabby-core": "*",
-    "tabby-ssh": "*",
     "tabby-settings": "*"
   }
 }
