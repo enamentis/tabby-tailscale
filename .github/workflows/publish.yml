@@ -1,0 +1,35 @@
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+
+      # Trusted publishing (OIDC) requires npm >= 11.5.1; pin it explicitly
+      # rather than relying on whatever version the runner's Node image ships.
+      - run: npm install -g npm@latest
+
+      # No package-lock.json is tracked in this repo (only the plugin's
+      # own runtime deps matter, and those are all externals resolved from
+      # the running Tabby app) - `npm ci` would fail without a lockfile.
+      - run: npm install
+
+      # `prepublishOnly` runs the webpack build automatically. No NODE_AUTH_TOKEN
+      # needed - npm authenticates via GitHub's OIDC token once this package's
+      # Trusted Publisher is configured on npmjs.com for this repo + workflow file.
+      - run: npm publish

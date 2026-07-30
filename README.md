@@ -1,5 +1,7 @@
 # Tabby Tailscale
 
+[![npm version](https://img.shields.io/npm/v/tabby-tailscale.svg)](https://www.npmjs.com/package/tabby-tailscale)
+
 An **unofficial** plugin for the [Tabby](https://tabby.sh) terminal. It is not made,
 endorsed, or supported by Tailscale Inc.
 
