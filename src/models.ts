@@ -8,7 +8,7 @@ export interface TailscalePeer {
 }
 
 export interface TailscaleStatus {
-    Peer: Record<string, TailscalePeer>
+    Peer: Record<string, TailscalePeer> | null
 }
 
 export interface TailscaleGroup {
