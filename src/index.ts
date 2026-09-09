@@ -68,7 +68,7 @@ export class TailscaleProfilesService extends ProfileProvider<SSHProfile> {
             showOfflineSuffix: this.config.store.tailscale.showOfflineSuffix,
         }
 
-        return Promise.all(Object.values(status.Peer)
+        return Promise.all(Object.values(status.Peer ?? {})
             .filter(peer => !onlyTagged || (peer.Tags?.length ?? 0) > 0)
             .map(peer => ({ peer, settings: applyRules(peer, rules, groups) }))
             .filter(({ settings }) => !settings.excluded)
