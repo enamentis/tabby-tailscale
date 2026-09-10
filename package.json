@@ -1,6 +1,6 @@
 {
   "name": "tabby-tailscale",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Tabby Tailscale - lists Tailscale peers as SSH connection profiles in Tabby, grouped and filtered by regex rules on hostname/tags/online status, with configurable name labels",
   "keywords": [
     "tabby-plugin",
